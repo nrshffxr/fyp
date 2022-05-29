@@ -15,11 +15,22 @@ pipelline {
         }
         
         stage('test') {
-            steps{
-                sh 'python3 -m pytest Sample/test_sample.py --verbose'
+            parallel{
+                stage('Test on Webapp'){
+                     steps{
+                        sh 'python3 -m pytest Sample/test_sample.py --verbose'
+                    }
+                }
+                stage('Test on Container'){
+                    steps{
+                        echo 'This is a test on the container'
+                    }
+                }
             }
+           
   
-    }      
+    }   
+    
         stage('deploy'){
             steps{
                 echo 'This is the Deployment Stage'
