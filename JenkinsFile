@@ -33,7 +33,7 @@ pipelline {
     
         stage('deploy'){
             steps{
-                echo 'This is the Deployment Stage'
+                echo 'This is  the Deployment Stage'
             }
         }
 
