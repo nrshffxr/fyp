@@ -6,5 +6,24 @@ pipelline {
     parameters {
       string(name: 'APP_NAME', defaultValue: '', description:'what is the heroku app name?')
     }
-    stages 
-    #incomplete_I_do_this_later
+    stages {
+        stage('build') {
+            steps{
+                step([$class: 'WsCleanup'])
+                sh 'git clone https://github.com/nrshffxr/fyp.git'
+            }
+        }
+        
+        stage('test') {
+            steps{
+                sh 'python3 -m pytest Sample/test_sample.py --verbose'
+            }
+  
+    }      
+        stage('deploy'){
+            steps{
+                echo 'This is the Deployment Stage'
+            }
+        }
+
+}
