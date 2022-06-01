@@ -13,7 +13,7 @@ pipeline {
             parallel{
                 stage('Test on Webapp'){
                      steps{
-                        sh 'python3 -m pytest https://github.com/nrshffxr/fyp/blob/akash/test_sample.py --verbose'
+                        sh 'python3 -m pytest test_sample.py --verbose'
                     }
                 }
                 stage('Test on Container'){
