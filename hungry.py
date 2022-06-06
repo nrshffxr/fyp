@@ -5,3 +5,5 @@ else:
    thirsty=input("are you thirsty?")
 if thirsy=="yes":
     print("drink water")
+
+
