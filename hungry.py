@@ -7,3 +7,4 @@ if thirsy=="yes":
     print("drink water")
 
 
+
