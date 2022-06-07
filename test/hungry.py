@@ -5,4 +5,3 @@ else:
     print("do your hw")
     print("watch drama lah")
     print("play guitar")
-
