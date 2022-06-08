@@ -4,6 +4,7 @@ if hungry=="yes":
 else:
     print("watch drama")
     print("play guitar")
+    print("drink water")
   
     
 
