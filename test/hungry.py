@@ -5,6 +5,7 @@ else:
     print("watch drama")
     print("play guitar")
     print("drink water")
+    print("eat")
   
     
 
