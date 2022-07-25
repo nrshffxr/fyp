@@ -2,10 +2,14 @@ pipeline {
   agent any
   
     stages {
-        stage('build') {
+        stage('Clone Repo') {
             steps{
                 step([$class: 'WsCleanup'])
-                sh 'git clone https://github.com/nrshffxr/fyp/tree/akash2'
+              script {
+                git credentialsId: '20026183-Akash' , url:'https://github.com/nrshffxr/fyp.git'
+                sh "ls -lart ./*"
+                sh "git branch -a"
+              }
             }
         }
         
