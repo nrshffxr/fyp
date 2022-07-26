@@ -1,4 +1,6 @@
 pipeline {
+  enviroment = 
+  
   agent any
   
     stages {
@@ -17,7 +19,7 @@ pipeline {
             steps{
                 echo 'This is the Build Stage'
               input(message: 'Do you want to proceed?' , ok: 'YES I wish to proceed')
-                sh 'docker build  /home/dockeradm/Desktop/cfe4dceaa6f2d07786c3f6833358a83975f2acc914423ed97c13b1d40d7040f5'
+                sh 'docker run ubuntu18.04 -p8080 /bin/bash'
             }
         }
         
