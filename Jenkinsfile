@@ -13,11 +13,11 @@ pipeline {
             }
         }
       
-       stage('deploy'){
+       stage('Build Container'){
             steps{
-                echo 'This is the Deployment Stage'
+                echo 'This is the Build Stage'
               input(message: 'Do you want to proceed?' , ok: 'YES I wish to proceed')
-              
+                sh 'docker build -t  /home/dockeradm/Desktop/Docker_Image'
             }
         }
         
