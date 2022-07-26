@@ -12,12 +12,18 @@ pipeline {
               }
             }
         }
+      
+       stage('deploy'){
+            steps{
+                echo 'This is the Deployment Stage'
+            }
+        }
         
         stage('test') {
             parallel{
                 stage('Test on Webapp'){
                      steps{
-                        sh 'python3 -m pytest test_sample.py --verbose'
+                        echo 'Have to use curl command to see if the web application is up and running'
                     }
                 }
                 stage('Test on Container'){
@@ -30,11 +36,7 @@ pipeline {
            
     }   
     
-        stage('deploy'){
-            steps{
-                echo 'This is the Deployment Stage'
-            }
-        }
+       
 
 }
 }
