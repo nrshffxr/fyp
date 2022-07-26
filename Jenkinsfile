@@ -1,6 +1,4 @@
 pipeline {
-  enviroment = 
-  
   agent any
   
     stages {
