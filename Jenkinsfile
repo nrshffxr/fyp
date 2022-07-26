@@ -17,7 +17,7 @@ pipeline {
             steps{
                 echo 'This is the Build Stage'
               input(message: 'Do you want to proceed?' , ok: 'YES I wish to proceed')
-                sh 'echo "docker&8" | sudo -S docker run ubuntu18.04 -p8080 /bin/bash'
+                sh 'echo "docker&8" | sudo -S docker run 5a214d77f5d7 -p8080 /bin/bash'
                 
                 
             }
