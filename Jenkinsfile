@@ -23,7 +23,8 @@ pipeline {
             parallel{
                 stage('Test on Webapp'){
                      steps{
-                        echo 'Have to use curl command to see if the web application is up and running'
+                       echo 'Have to use curl command to see if the web application is up and running'
+                       sh 'curl --version'
                     }
                 }
                 stage('Test on Container'){
