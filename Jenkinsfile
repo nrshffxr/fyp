@@ -16,9 +16,7 @@ pipeline {
        stage('deploy'){
             steps{
                 echo 'This is the Deployment Stage'
-              input {
-                message "Continue to build the container?"
-                ok "YES"
+              input('Do you want to proceed?')
               }
               
             }
