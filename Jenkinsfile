@@ -18,6 +18,8 @@ pipeline {
                 echo 'This is the Build Stage'
 		echo 'The Input Command will pause the pipeline untill user approval is given'
               	input(message: 'Do you want to proceed?' , ok: 'YES I wish to proceed')
+		    
+		sh ' docker rm -f FYP '
 
 		echo 'this command will run the container image'
                 sh 'echo "docker&8" | sudo -S docker container create -it --name FYP e04290a7374b /bin/bash'
