@@ -26,7 +26,7 @@ pipeline {
             }
         }
 	
-	stage(Build Web Application'){
+	stage('Build Web Application'){
 		steps{
 		echo 'This will move the file to the container'
 		sh 'docker cp contactus.html e04290a7374b:/contactus.html'
