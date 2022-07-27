@@ -22,7 +22,7 @@ pipeline {
 		docker rm -f FYP
 
 		echo 'this command will run the container image'
-                sh 'echo "docker&8" | sudo -S docker container create -it --name FYP e04290a7374b /bin/bash'
+                sh 'echo "docker&8" | sudo -S docker container create -it --name FYP fypimage /bin/bash'
                 
                 
             }
