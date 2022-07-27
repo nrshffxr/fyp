@@ -29,7 +29,7 @@ pipeline {
 	stage('Build Web Application'){
 		steps{
 			
-		sh 'echo "docker&8" | sudo -S usr/bin/docker rm -f FYP'
+		sh 'echo "docker&8" | sudo -S /usr/bin/docker rm -f FYP'
 
 		echo 'this command will run the container image'
                 sh 'echo "docker&8" | sudo -S docker container create -it --name FYP fypimage /bin/bash'
