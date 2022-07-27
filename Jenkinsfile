@@ -29,17 +29,17 @@ pipeline {
 	stage('Build Web Application'){
 		steps{
 			
-		sh 'echo "docker&8" | sudo -S /usr/bin/docker rm -f FYP'
+		sh 'echo "docker&8" | sudo -S /usr/bin/docker rm -f XAMPP'
 
 		echo 'this command will run the container image'
-                sh 'echo "docker&8" | sudo -S docker container create -it --name FYP fypimage /bin/bash'
+                sh 'echo "docker&8" | sudo -S docker container create -it --name XAMPP fypimage /bin/bash'
 			
 			
 		echo 'This will move the file to the container'
-		sh 'echo "docker&8" | sudo -S docker cp contactus.html FYP:/opt/lampp/htdocs/contactus.html'
+		sh 'echo "docker&8" | sudo -S docker cp contactus.html XAMPP:/opt/lampp/htdocs/contactus.html'
 
 		echo 'Run XAMPP'
-		sh 'echo "docker&8" | sudo -S /opt/lampp/lampp start' 
+		sh 'echo "docker&8" | docker exec -it XAMPP /bin/bash | sudo -S /opt/lampp/lampp start' 
 		}
 		
 	}
@@ -50,7 +50,7 @@ pipeline {
                      steps{
                        echo 'Have to use curl command to see if the web application is up and running'
                        sh 'curl --version'
-                       sh 'echo "docker&8" | sudo -S curl 172.17.0.3'
+                       sh 'echo "docker&8" | sudo -S curl 10.1.0.99'
                     }
                 }
                 stage('Test on Container'){
