@@ -36,6 +36,8 @@ pipeline {
 			
 		echo 'This will move the file to the container'
 		sh 'echo "docker&8" | sudo -S docker cp contactus.html FYP:/opt/lampp/htdocs/contactus.html'
+			
+		sh 'echp "docker&8" | sudo -S docker cp test_script.sh FYP:/'
 
 		echo 'Run XAMPP'
 		sh 'echo "docker&8" | sudo -S /var/lib/jenkins/workspace/Jenkins Pipeline/test_script.sh"' 
