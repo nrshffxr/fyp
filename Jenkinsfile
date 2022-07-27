@@ -29,13 +29,13 @@ pipeline {
 	stage('Build Web Application'){
 		steps{
 		echo 'This will move the file to the container'
-		sh 'echo "docker&8" | sudo -S docker cp contactus.html FYP:/contactus.html'
+		sh 'docker cp contactus.html FYP:/contactus.html'
 
 		echo 'This will move the file to the correct directory. Have to run this command inside the container'
-		sh 'docker -esec -it hello-world bash | mv contactus.html /opt/lampp/htdocs'
+		sh 'docker -exec -it FYP /bin/bash | mv contactus.html /opt/lampp/htdocs'
 
-		echo 'Run XMPP'
-		sh 'run ./lampp' 
+		echo 'Run XAMPP'
+		sh '/opt/lampp/lampp start' 
 		}
 		
 	}
