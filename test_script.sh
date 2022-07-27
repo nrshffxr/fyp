@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 sudo -i
 docker&8
 sudo docker exec -it FYP /bin/bash
