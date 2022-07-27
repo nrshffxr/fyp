@@ -38,7 +38,7 @@ pipeline {
 		sh 'echo "docker&8" | sudo -S docker cp contactus.html FYP:/opt/lampp/htdocs/contactus.html'
 
 		echo 'Run XAMPP'
-		sh '/var/lib/jenkins/workspace/Jenkins\ Pipeline/test_script.sh' 
+		sh '"/var/lib/jenkins/workspace/Jenkins Pipeline/test_script.sh"' 
 		}
 		
 	}
