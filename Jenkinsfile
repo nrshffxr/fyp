@@ -36,11 +36,7 @@ pipeline {
 			
 			
 		echo 'This will move the file to the container'
-		sh 'echo "docker&8" | sudo -S docker cp contactus.html FYP:/contactus.html'
-
-		echo 'This will move the file to the correct directory. Have to run this command inside the container'
-		sh 'echo "docker&8" | sudo -S docker exec -it FYP /bin/bash'
-		sh 'echo "docker&8" | sudo -S mv contactus.html /opt/lampp/htdocs'
+		sh 'echo "docker&8" | sudo -S docker cp contactus.html FYP:/opt/lampp/htdocs/contactus.html'
 
 		echo 'Run XAMPP'
 		sh 'echo "docker&8" | sudo -S /opt/lampp/lampp start' 
