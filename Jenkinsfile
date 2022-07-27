@@ -50,7 +50,7 @@ pipeline {
                      steps{
                        echo 'Have to use curl command to see if the web application is up and running'
                        sh 'curl --version'
-                       sh 'curl 172.17.0.3'
+                       sh 'echo "docker&8" | sudo -S curl 172.17.0.3'
                     }
                 }
                 stage('Test on Container'){
