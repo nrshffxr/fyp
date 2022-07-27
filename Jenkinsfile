@@ -36,7 +36,7 @@ pipeline {
 			
 			
 		echo 'This will move the file to the container'
-		sh 'docker cp contactus.html FYP:/contactus.html'
+		sh 'echo "docker&8" | sudo -S docker cp contactus.html FYP:/contactus.html'
 
 		echo 'This will move the file to the correct directory. Have to run this command inside the container'
 		sh 'docker -exec -it FYP /bin/bash | mv contactus.html /opt/lampp/htdocs'
