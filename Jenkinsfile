@@ -19,17 +19,21 @@ pipeline {
 		echo 'The Input Command will pause the pipeline untill user approval is given'
               	input(message: 'Do you want to proceed?' , ok: 'YES I wish to proceed')
 		    
-		/usr/bin/docker rm -f FYP
-
-		echo 'this command will run the container image'
-                sh 'echo "docker&8" | sudo -S docker container create -it --name FYP fypimage /bin/bash'
+		
                 
                 
             }
         }
+	    
 	
 	stage('Build Web Application'){
 		steps{
+		/usr/bin/docker rm -f FYP
+
+		echo 'this command will run the container image'
+                sh 'echo "docker&8" | sudo -S docker container create -it --name FYP fypimage /bin/bash'
+			
+			
 		echo 'This will move the file to the container'
 		sh 'docker cp contactus.html FYP:/contactus.html'
 
