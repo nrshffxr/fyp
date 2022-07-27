@@ -39,7 +39,7 @@ pipeline {
 
 		echo 'Run XAMPP'
 		sh 'echo "docker&8" | sudo -S docker exec -it FYP /bin/bash | $shell' 
-		sh 'echo "docker&8" | sudo -S /opt/lampp/lampp start 
+		sh 'echo "docker&8" | sudo -S /opt/lampp/lampp start ' 
 		}
 		
 	}
