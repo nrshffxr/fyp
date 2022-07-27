@@ -32,8 +32,7 @@ pipeline {
 		sh 'echo "docker&8" | sudo -S /usr/bin/docker rm -f FYP'
 
 		echo 'this command will run the container image'
-                sh 'echo "docker&8" | sudo -S docker run -d -it -h created --add-host created:10.1.0.2 --network fyp_customnetwork --ip 10.1.0.98 --name FYP fypimage /bin/bash
-'			
+                sh 'echo "docker&8" | sudo -S docker run -d -it -h created --add-host created:10.1.0.2 --network fyp_customnetwork --ip 10.1.0.98 --name FYP fypimage /bin/bash' 			
 			
 		echo 'This will move the file to the container'
 		sh 'echo "docker&8" | sudo -S docker cp contactus.html FYP:/opt/lampp/htdocs/contactus.html'
