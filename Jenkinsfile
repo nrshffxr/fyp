@@ -47,15 +47,13 @@ pipeline {
 			
 		sh 'echo "docker&8" | sudo -S docker exec FYP mkdir -p /var/lib/scripts'
 		
-		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/test_script.sh FYP:/var/lib/scripts/test_script.sh'
-
-		sh 'echo "docker&8 | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/ViewProfile.sql FYP:/var/lib/scripts/ViewProfile.sql'
 			
+		echo 'import sql file into container' 
+		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/ViewProfile.sql FYP:/var/lib/scripts/ViewProfile.sql'
 		sh 'echo "docker&8" | sudo -S docker exec FYP mysql ViewProfile < /var/lib/scripts/ViewProfile.sql'
 			
-		echo 'Run XAMPP'
-		
-		sh 'echo "docker&8" | sudo -S docker exec FYP chmod +x /var/lib/scripts/test_script.sh' 	
+			
+		echo 'Run XAMPP'	
 		sh 'echo "docker&8" | sudo -S docker exec FYP /opt/lampp/lampp start'
 		}	
 	}
