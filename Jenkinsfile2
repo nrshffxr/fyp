@@ -46,7 +46,7 @@ pipeline {
 
 		echo 'Run XAMPP'
 		
-		sh 'echo "docker&8" | sudo -S docker exec mycontainer /path/to/test.sh'
+		sh 'echo "docker&8" | sudo -S docker exec FYP /path/to/test.sh'
 		}	
 	}
         
@@ -62,6 +62,8 @@ pipeline {
                 stage('Test on Container'){
                     steps{
                         echo 'This is a test on the container'
+			sh 'echo "docker&8" | sudo -S docker exec -it FYP echo "Hello From container! " '
+			
                     }
                 }
             }
