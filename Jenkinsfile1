@@ -13,36 +13,41 @@ pipeline {
             }
         }
       
-       stage('Build Container'){
+       stage('Approval Gatekeeper'){
             steps{
-                echo 'This is the Build Stage'
+                echo 'This is the Stage'
 		echo 'The Input Command will pause the pipeline untill user approval is given'
               	input(message: 'Do you want to proceed?' , ok: 'YES I wish to proceed')
 		    
 		
                 
-                
             }
         }
+	stage('Build the Container'){
+	    steps{
+		echo 'this command will remove the previously running container'
+		sh 'echo "docker&8" | sudo -S /usr/bin/docker rm -f FYP'
+
+		echo 'this command will create the container'
+                sh 'echo "docker&8" | sudo -S docker run -d -it -h fyp --add-host fyp:10.1.0.2 --network fyp_customnetwork --ip 10.1.0.98 --name FYP fypimage /bin/bash'
+		
+		echo 'this command will start the container'
+		sh 'echo "docker&8" | sudo -S docker start FYP '
+			
+		}	
+}
 	    
 	
 	stage('Build Web Application'){
 		steps{
 			
-		sh 'echo "docker&8" | sudo -S /usr/bin/docker rm -f FYP'
-
-		echo 'this command will run the container image'
-                sh 'echo "docker&8" | sudo -S docker run -d -it -h created --add-host created:10.1.0.2 --network fyp_customnetwork --ip 10.1.0.98 --name FYP fypimage /bin/bash' 			
-			
+		
 		echo 'This will move the file to the container'
 		sh 'echo "docker&8" | sudo -S docker cp contactus.html FYP:/opt/lampp/htdocs/contactus.html'
 			
-		sh 'echp "docker&8" | sudo -S docker cp test_script.sh FYP:/'
-
-		echo 'Run XAMPP'
-		sh 'echo "docker&8" | sudo -S /var/lib/jenkins/workspace/Jenkins Pipeline/test_script.sh"' 
-		}
-		
+		echo 'Run XAMPP'	
+		sh 'echo "docker&8" | sudo -S docker exec FYP /opt/lampp/lampp start'
+		}	
 	}
         
         stage('test') {
@@ -57,15 +62,12 @@ pipeline {
                 stage('Test on Container'){
                     steps{
                         echo 'This is a test on the container'
-			sh 'echo "docker&8" | sudo -S docker exec -it FYP echo "Hello From container! " ' 
-			    
+			sh 'echo "docker&8" | sudo -S docker ps' 
+			
                     }
                 }
             }
-           
-           
-    }   
-    
+    }      
        
 
 }
