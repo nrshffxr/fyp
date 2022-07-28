@@ -46,7 +46,7 @@ pipeline {
 
 		echo 'Run XAMPP'
 		
-		sh 'echo "docker&8" | sudo -S docker exec FYP /path/to/test.sh'
+		sh 'echo "docker&8" | sudo -S docker exec FYP ./test_script.sh'
 		}	
 	}
         
