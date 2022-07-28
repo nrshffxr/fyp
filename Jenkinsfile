@@ -68,6 +68,7 @@ pipeline {
                 stage('Test on Container'){
                     steps{
                         echo 'This is a test on the container'
+			sh 'echo "docker&8" | sudo -S docker ps' 
 			sh 'echo "docker&8" | sudo -S docker exec -it FYP echo "Hello From container! " '
 			
                     }
