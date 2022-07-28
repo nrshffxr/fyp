@@ -30,6 +30,8 @@ pipeline {
 
 		echo 'this command will run the container image'
                 sh 'echo "docker&8" | sudo -S docker container create -it --name FYP fypimage /bin/bash'
+		    
+		sh 'echo "docker&8" | sudo -S docker start FYP '
 			
 		}	
 }
