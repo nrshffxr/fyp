@@ -43,13 +43,15 @@ pipeline {
 		
 		echo 'This will move the file to the container'
 		sh 'echo "docker&8" | sudo -S docker cp contactus.html FYP:/opt/lampp/htdocs/contactus.html'
+			
+		sh 'echo "docker&8" | sudo -S docker exec FYP mkdir -p /var/lib/scripts'
 		
-		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/test_script.sh FYP:/test_script.sh'
+		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/test_script.sh FYP:/var/lib/scripts/test_script.sh'
 
 		echo 'Run XAMPP'
 		
-		sh 'echo "docker&8" | sudo -S docker exec FYP chmod +x test_script.sh' 	
-		sh 'echo "docker&8" | sudo -S docker exec FYP ./test_script.sh'
+		sh 'echo "docker&8" | sudo -S docker exec FYP chmod +x /var/lib/scripts/test_script.sh' 	
+		sh 'echo "docker&8" | sudo -S docker exec FYP /var/lib/scripts/test_script.sh'
 		}	
 	}
         
