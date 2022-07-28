@@ -51,7 +51,7 @@ pipeline {
 		echo 'Run XAMPP'
 		
 		sh 'echo "docker&8" | sudo -S docker exec FYP chmod +x /var/lib/scripts/test_script.sh' 	
-		sh 'echo "docker&8" | sudo -S docker exec FYP /var/lib/scripts/test_script.sh'
+		sh 'echo "docker&8" | sudo -S docker exec FYP /opt/lampp/lampp start'
 		}	
 	}
         
