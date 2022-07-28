@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo /opt/lmpp/lmpp start
+sudo /opt/lampp/lampp start
