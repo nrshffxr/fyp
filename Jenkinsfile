@@ -28,9 +28,10 @@ pipeline {
 		echo 'this command will remove the previously running container'
 		sh 'echo "docker&8" | sudo -S /usr/bin/docker rm -f FYP'
 
-		echo 'this command will run the container image'
-                sh 'echo "docker&8" | sudo -S docker container create -it --name FYP fypimage /bin/bash'
-		    
+		echo 'this command will create the container'
+                sh 'echo "docker&8" | sudo -S docker run -d -it -h fyp --add-host fyp:10.1.0.2 --network fyp_customnetwork --ip 10.1.0.98 --name FYP fypimage /bin/bash'
+		
+		echo 'this command will start the container'
 		sh 'echo "docker&8" | sudo -S docker start FYP '
 			
 		}	
@@ -61,7 +62,7 @@ pipeline {
                      steps{
                        echo 'Have to use curl command to see if the web application is up and running'
                        sh 'curl --version'
-                       sh 'echo "docker&8" | sudo -S curl 172.17.0.3'
+                       sh 'echo "docker&8" | sudo -S curl 10.1.0.98'
                     }
                 }
                 stage('Test on Container'){
