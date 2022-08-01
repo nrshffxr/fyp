@@ -44,10 +44,11 @@ pipeline {
 		
 		echo 'This will move the file to the container'
 		sh 'echo "docker&8" | sudo -S docker cp ViewProfile.war FYP:/opt/lampp/htdocs/ViewProfile.war'
-		sh 'echo "docker&8" | sudo -S docker exec FYP unzip /opt/lampp/htdocs/ViewProfile.war'
+		sh 'echo "docker&8" | sudo -S docker exec FYP jar -xvf /opt/lampp/htdocs/ViewProfile.war'
 			
 		sh 'echo "docker&8" | sudo -S docker exec FYP mkdir -p /var/lib/scripts'
 		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/ViewProfile.sql FYP:/var/lib/scripts/ViewProfile.sql'
+			
 			
 		echo 'import sql file into container' 
 		
