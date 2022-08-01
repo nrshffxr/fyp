@@ -28,11 +28,18 @@ pipeline {
 		echo 'this command will remove the previously running container'
 		sh 'echo "docker&8" | sudo -S /usr/bin/docker rm -f FYP'
 
-		echo 'this command will create the container'
+		echo 'this command will create the web container'
                 sh 'echo "docker&8" | sudo -S docker run -d -it -h fyp --add-host fyp:10.1.0.2 --network fyp_customnetwork --ip 10.1.0.98 --name FYP fypimage /bin/bash'
 		
-		echo 'this command will start the container'
+		echo 'this command will create the mysql container'
+		sh 'echo "docker&8" | sudo -S docker run -d -it -h mysqlfyp --add-host mysqlfyp:10.1.0.3 --network fyp_customnetwork --ip 10.1.0.97 --name MYSQL fypimage /bin/bash'
+
+		    
+		echo 'this command will start the web container'
 		sh 'echo "docker&8" | sudo -S docker start FYP '
+		    
+		echo 'this command will start the mysql container'
+		sh 'echo "docker&8" | sudo -S docker start mysql '
 			
 		}	
 }
