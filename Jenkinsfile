@@ -50,7 +50,7 @@ pipeline {
 			
 		echo 'import sql file into container' 
 		sh 'echo "docker&8" | sudo -S docker cp ViewProfile.sql FYP:/var/lib/scripts/ViewProfile.sql'
-		sh 'echo "docker&8" | sudo -S docker exec FYP mysql -p ViewProfile < /var/lib/scripts/ViewProfile.sql'
+		sh 'echo "docker&8" | sudo -S docker exec FYP mysql -u root@localhost -p ViewProfile < /var/lib/scripts/ViewProfile.sql'
 			
 			
 		echo 'Run XAMPP'	
