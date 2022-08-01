@@ -44,7 +44,7 @@ pipeline {
 		
 		echo 'This will move the file to the container'
 		sh 'echo "docker&8" | sudo -S docker cp ViewProfile.war FYP:/opt/lampp/htdocs/ViewProfile.war'
-		sh 'echo "docker&8" | sudo -S docker exec jar xvf ViewProfile.war'
+		sh 'echo "docker&8" | sudo -S docker exec FYP jar xvf /opt/lampp/htdocs/ViewProfile.war'
 			
 		sh 'echo "docker&8" | sudo -S docker exec FYP mkdir -p /var/lib/scripts'
 		
