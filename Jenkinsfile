@@ -47,10 +47,10 @@ pipeline {
 		sh 'echo "docker&8" | sudo -S docker exec FYP unzip /opt/lampp/htdocs/ViewProfile.war'
 			
 		sh 'echo "docker&8" | sudo -S docker exec FYP mkdir -p /var/lib/scripts'
-		
+		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/ViewProfile.sql FYP:/var/lib/scripts/ViewProfile.sql'
 			
 		echo 'import sql file into container' 
-		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/ViewProfile.sql FYP:/var/lib/scripts/ViewProfile.sql'
+		
 		sh 'echo "docker&8" | sudo -S docker exec FYP mysql -u root@localhost -p ViewProfile < /var/lib/scripts/ViewProfile.sql'
 			
 			
