@@ -15,7 +15,6 @@ pipeline {
       
        stage('Approval Gatekeeper'){
             steps{
-                echo 'This is the Stage'
 		echo 'The Input Command will pause the pipeline untill user approval is given'
               	input(message: 'Do you want to proceed?' , ok: 'YES I wish to proceed')
 		    
