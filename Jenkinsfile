@@ -28,7 +28,7 @@ pipeline {
 		sh 'echo "docker&8" | sudo -S /usr/bin/docker rm -f MYSQL'
 
 		echo 'this command will create the web container'
-                sh 'echo "docker&8" | sudo -S docker run -d -it -h fyp --add-host fyp:10.1.0.2 --network fyp_customnetwork --ip 10.1.0.98 --name FYP fypimage /bin/bash'
+                sh 'echo "docker&8" | sudo -S docker run -d -it -h fyp --add-host fyp:10.1.0.2 --network fyp_customnetwork --ip 10.1.0.98 --name FYP fypimagenew /bin/bash'
 		
 		echo 'this command will create the mysql container'
 		sh 'echo "docker&8" | sudo -S docker run -d -it -h mysqlfyp --add-host mysqlfyp:10.1.0.3 --network fyp_customnetwork --ip 10.1.0.97 --name MYSQL fypimage /bin/bash'
