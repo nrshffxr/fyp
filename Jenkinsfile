@@ -60,6 +60,11 @@ pipeline {
 		echo 'moves the .sql file into the container' 
 		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/ViewProfile.sql FYP:/var/lib/scripts/ViewProfile.sql'
 			
+		echo 'Create the Database'
+		echo 'echo "docker&8" | sudo -S docker exec FYP mysqladmin -u root@localhost create ViewProfile'
+		
+		echo 'import SQL into database'
+		echo 'echo "docker&8" | sudo -S docker exec FYP mysql -u root@localhost -p ViewProfile < /var/lib/scripts/ViewProfile.sql'
 		
 		echo 'Run XAMPP'	
 		sh 'echo "docker&8" | sudo -S docker exec FYP /opt/lampp/lampp start'
