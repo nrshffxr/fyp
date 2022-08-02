@@ -41,6 +41,7 @@ pipeline {
 		    
 		echo 'this command will start the mysql container'
 		sh 'echo "docker&8" | sudo -S docker start MYSQL '
+		    
 			
 		}	
 }
@@ -50,16 +51,20 @@ pipeline {
 		steps{
 			
 		
-		echo 'This will move the file to the container'
+		echo 'This will move the .war file to the container'
 		sh 'echo "docker&8" | sudo -S docker cp ViewProfile.war FYP:/opt/lampp/htdocs/ViewProfile.war'
+			
+		echo 'Extract the .war file '
 		sh 'echo "docker&8" | sudo -S docker exec FYP jar -xvf /opt/lampp/htdocs/ViewProfile.war'
 			
+		echo 'makes a scripts Folder' 
 		sh 'echo "docker&8" | sudo -S docker exec FYP mkdir -p /var/lib/scripts'
+			
+		echo 'moves the .sql file into the container' 
 		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/ViewProfile.sql FYP:/var/lib/scripts/ViewProfile.sql'
 			
 			
-		echo 'import sql file into container' 
-		
+		echo 'import sql file into myphpadmin ' 
 		sh 'echo "docker&8" | sudo -S docker exec FYP mysql -u root@localhost -p ViewProfile < /var/lib/scripts/ViewProfile.sql'
 			
 			
