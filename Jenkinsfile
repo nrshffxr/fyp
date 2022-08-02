@@ -17,9 +17,7 @@ pipeline {
             steps{
                 echo 'This is the Stage'
 		echo 'The Input Command will pause the pipeline untill user approval is given'
-              	input(message: 'Do you want to proceed?' , ok: 'YES I wish to proceed')
-		    
-		
+              	input(message: 'Do you want to proceed?' , ok: 'YES I wish to proceed ')
                 
             }
         }
@@ -34,7 +32,6 @@ pipeline {
 		
 		echo 'this command will create the mysql container'
 		sh 'echo "docker&8" | sudo -S docker run -d -it -h mysqlfyp --add-host mysqlfyp:10.1.0.3 --network fyp_customnetwork --ip 10.1.0.97 --name MYSQL fypimage /bin/bash'
-
 		    
 		echo 'this command will start the web container'
 		sh 'echo "docker&8" | sudo -S docker start FYP '
