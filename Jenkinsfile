@@ -39,7 +39,7 @@ pipeline {
 		sh 'echo "docker&8" | sudo -S docker start FYP '
 		    
 		echo 'this command will start the mysql container'
-		sh 'echo "docker&8" | sudo -S docker start mysql '
+		sh 'echo "docker&8" | sudo -S docker start mysqlfyp '
 			
 		}	
 }
