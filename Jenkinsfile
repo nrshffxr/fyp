@@ -99,10 +99,12 @@ pipeline {
             }
         }
 	    
-	    stage("Rollout New Feature")
+	    stage("Rollout New Feature"){
 	    step{
 		echo 'this will move the contactus.html file into the container'
 		sh 'echo "docker&8" | sudo -S docker cp contactus.html FYP:/opt/lampp/htdocs/contactus.html'
+	    }
+	    }
        
 
 }
