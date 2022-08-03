@@ -77,7 +77,7 @@ pipeline {
                      steps{
                        echo 'Have to use curl command to see if the web application is up and running'
                        sh 'curl --version'
-                       sh 'echo "docker&8" | sudo -S curl 10.1.0.98'
+                       sh 'echo "docker&8" | sudo -S curl http://10.1.0.98/Home.php'
                     }
                 }
                 stage('Test on Container'){
