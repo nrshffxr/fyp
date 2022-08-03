@@ -49,10 +49,10 @@ pipeline {
 			
 		
 		echo 'This will move the .war file to the container'
-		sh 'echo "docker&8" | sudo -S docker cp ViewProfile.war FYP:ViewProfile.zip'
+		sh 'echo "docker&8" | sudo -S docker cp ViewProfile.war FYP:ViewProfile.war'
 			
 		echo 'Extract the .war file '
-		sh 'echo "docker&8" | sudo -S docker exec FYP unzip -o ViewProfile.zip -d /opt/lampp/htdocs'
+		sh 'echo "docker&8" | sudo -S docker exec FYP unzip -o ViewProfile.war -d /opt/lampp/htdocs'
 			
 		echo 'makes a scripts Folder' 
 		sh 'echo "docker&8" | sudo -S docker exec FYP mkdir -p /var/lib/scripts'
