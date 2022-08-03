@@ -2,7 +2,18 @@ pipeline {
   agent any
   
     stages {
-        stage('Clone Repo') {
+        
+	    stage('Approval Gatekeeper'){
+            steps{
+                echo 'This is the Stage'
+		echo 'The Input Command will pause the pipeline untill user approval is given'
+              	input(message: 'Do you want to proceed?' , ok: 'YES I wish to proceed ')
+                
+            }
+        }
+	    
+	    
+	    stage('Clone Repo') {
             steps{
                 step([$class: 'WsCleanup'])
               script {
@@ -13,14 +24,7 @@ pipeline {
             }
         }
       
-       stage('Approval Gatekeeper'){
-            steps{
-                echo 'This is the Stage'
-		echo 'The Input Command will pause the pipeline untill user approval is given'
-              	input(message: 'Do you want to proceed?' , ok: 'YES I wish to proceed ')
-                
-            }
-        }
+       
 	stage('Build the Container'){
 	    steps{
 		echo 'this command will remove the previously running container'
