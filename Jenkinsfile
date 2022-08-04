@@ -43,7 +43,6 @@ pipeline {
 		echo 'this command will start the mysql container'
 		sh 'echo "docker&8" | sudo -S docker start MYSQL '
 		    
-			
 		}	
 }
 	    
@@ -72,6 +71,7 @@ pipeline {
 		
 		echo 'Run XAMPP'	
 		sh 'echo "docker&8" | sudo -S docker exec FYP /opt/lampp/lampp start'
+			
 		}	
 	}
         
