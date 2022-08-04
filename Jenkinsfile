@@ -57,17 +57,17 @@ pipeline {
 		echo 'Extract the .war file '
 		sh 'echo "docker&8" | sudo -S docker exec FYP unzip -o ViewProfile.war -d /opt/lampp/htdocs'
 			
-		echo 'makes a scripts Folder' 
-		sh 'echo "docker&8" | sudo -S docker exec FYP mkdir -p /var/lib/scripts'
+		echo 'makes a sql Folder' 
+		sh 'echo "docker&8" | sudo -S docker exec FYP mkdir -p /var/lib/sql'
 			
 		echo 'moves the .sql file into the container' 
-		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/ViewProfile.sql FYP:/var/lib/scripts/ViewProfile.sql'
+		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/ViewProfile.sql FYP:/var/lib/sql/ViewProfile.sql'
 			
 		echo 'Create the Database'
 		echo 'echo "docker&8" | sudo -S docker exec FYP mysqladmin -u root@localhost create ViewProfile2'
 		
 		echo 'import SQL into database'
-		echo 'echo "docker&8" | sudo -S docker exec FYP mysqlimport -u root@localhost -p ViewProfile2 /var/lib/scripts/ViewProfile.sql'
+		echo 'echo "docker&8" | sudo -S docker exec FYP mysqlimport -u root@localhost -p ViewProfile2 /var/lib/sql/ViewProfile.sql'
 		
 		echo 'Run XAMPP'	
 		sh 'echo "docker&8" | sudo -S docker exec FYP /opt/lampp/lampp start'
