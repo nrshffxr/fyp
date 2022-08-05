@@ -64,10 +64,10 @@ pipeline {
 		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline"/ViewProfile.sql FYP:/var/lib/sql/ViewProfile.sql'
 			
 		echo 'Create the Database'
-		echo 'echo "docker&8" | sudo -S docker exec FYP mysqladmin -u root@localhost create ViewProfile2'
+		echo 'echo "docker&8" | sudo -S docker exec FYP mysqladmin -u root create ViewProfile2'
 		
 		echo 'import SQL into database'
-		echo 'echo "docker&8" | sudo -S docker exec FYP mysqlimport -u root@localhost -p ViewProfile2 /var/lib/sql/ViewProfile.sql'
+		echo 'echo "docker&8" | sudo -S docker exec FYP mysqlimport -u root -p ViewProfile2 /var/lib/sql/ViewProfile.sql'
 		
 		echo 'Run XAMPP'	
 		sh 'echo "docker&8" | sudo -S docker exec FYP /opt/lampp/lampp start'
