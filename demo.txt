@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta />
+    <title>Student Login</title>
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/StyleSheet2.css" rel="stylesheet">
+
+</head>
+<body>
+    <h1><marquee>Welcome to the student login page</marquee></h1>
+    <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <hr />
+    <div class="offset-xl-3 col-xl-5">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <a style="color: red;" class="navbar-text" href="Home.php">Home</a>&nbsp;|&nbsp;
+            <a style="color: red;" class="navbar-text" href="AdministratorLogin.php">Administrator Login</a>&nbsp;|&nbsp;
+            <a style="color: red;" class="navbar-text" href="AboutUs.php">About Us</a>&nbsp;|&nbsp;
+            <a style="color: red;" class="navbar-text" href="">Contact Us</a>
+        </nav>
+    </div>
+    <br />
+    <div class="container">
+        <form name="StudentLoginForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
+            <div class="form-group row">
+                <div class="offset-xl-3 col-xl-6">
+                    <h2>Student login</h2>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="username" class="control-label col-xl-3">Username: </label>
+
+                <div class="col-xl-6">
+
+                    <input type="text" class="form-control" id="username" name="StudentUsername" />
+<?php/*
+$username = htmlspecialchars(stripslashes(trim($_POST["StudentUsername"])));
+
+if (empty($username))
+{
+echo "Username is required";
+}
+*/?>
+                </div>
+            </div>
+
+            <div class="form-group row" hidden>
+                <label for="formID" class="control-label col-xl-3">Form ID: </label>
+                <div class="col-xl-6">
+                    <input type="text" class="form-control" id="formID" name="FormID" value="1" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="password" class="control-label col-xl-3">Password: </label>
+                <div class="col-xl-6">
+                    <input type="password" class="form-control" id="password" name="Password" />
+<?php/*
+$password = htmlspecialchars(stripslashes(trim($_POST["Password"])));
+
+if (empty($password))
+{
+echo "Password is required";
+}
+*/?>
+                </div>
+            </div>
+
+            <a class="form-group row offset-xl-3 col-xl-6" href="ForgetPassword.php">Forgot password?</a>
+
+            <div class="form-group row">
+                <div class="offset-xl-3 col-xl-6">
+                    <input type="submit" class="btn btn-secondary" value="Login" />
+                </div>
+            </div>
+<?php
+//include 'dbconnection.php';
+
+//$conn = OpenCon();
+
+//echo "Connected successfully!";
+
+//CloseCon($conn);
+session_start();
+$servername = "localhost";
+$user = "root";
+$pass = "";
+$dbname = "ViewProfile2";
+
+$conn = mysqli_connect($servername, $user, $pass, $dbname);
+$username = htmlspecialchars(stripslashes(trim($_POST["StudentUsername"])));
+$_SESSION["user"] = $username;
+
+if (!$conn)
+{
+    die("Connection failed: ".mysqli_connect_error());
+}
+
+    $username = htmlspecialchars(stripslashes(trim($_POST["StudentUsername"])));
+    $password = htmlspecialchars(stripslashes($_POST["Password"]));
+    //echo "Connected successfully";
+
+    if (empty($username) || empty($password))
+    {
+        echo "Username or password is required";
+    }
+    else
+    {
+        $select = "SELECT StudentID FROM Students WHERE StudentID = '$username' AND StudentPassword = password('$password')";
+        $res = mysqli_query($conn, $select);
+
+        if (mysqli_num_rows($res)>0)
+        {
+
+	    $select = "SELECT StudentID from Students where StudentID = '$username' and IsItLocked = 'N'";
+            $res = mysqli_query($conn, $select);
+
+            if (mysqli_num_rows($res)>0)
+            {
+                header("location: StudentHomePage.php");
+            }
+            else
+            {
+                echo "Your account is locked";
+            }
+        }
+        else
+        {
+            echo "Username or password is incorrect";
+        }
+
+    }
+
+mysqli_close($conn);
+
+?>
+        </form>
+    </div>
+    <br />
+    <footer class="offset-xl-3"><marquee>&copy</marquee></footer>
+</body>
+</html>
+
