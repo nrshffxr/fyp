@@ -67,7 +67,7 @@ pipeline {
 		echo 'echo "docker&8" | sudo -S docker exec FYP mysql -u root -e "create database ViewProfile2;"'
 		
 		echo 'import SQL into database'
-		echo 'echo "docker&8" | sudo -S docker exec FYP mysqlimport -aecu root -abcp ViewProfile2 /var/lib/sql/ViewProfile.sql'
+		echo 'echo "docker&8" | sudo -S docker exec FYP mysqlimport -u root -p ViewProfile2 /var/lib/sql/ViewProfile.sql'
 		
 		echo 'Run XAMPP'	
 		sh 'echo "docker&8" | sudo -S docker exec FYP /opt/lampp/lampp start'
