@@ -5,7 +5,7 @@ pipeline {
         stage('build') {
             steps{
                 step([$class: 'WsCleanup'])
-                sh 'git clone https://github.com/nrshffxr/fyp/tree/akash'
+                sh 'git clone https://github.com/nrshffxr/fyp/tree/akash2'
             }
         }
         
