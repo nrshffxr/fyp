@@ -52,7 +52,7 @@ pipeline {
 			
 		
 		echo 'This will move the .war file to the container'
-		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline@2"/Desktop/ViewProfile_1.war FYP:ViewProfile.war'
+		sh 'echo "docker&8" | sudo -S docker cp /var/lib/jenkins/workspace/"Jenkins Pipeline@2"/Desktop/ViewProfile_1.war~HEAD FYP:ViewProfile.war'
 			
 		echo 'Extract the .war file '
 		sh 'echo "docker&8" | sudo -S docker exec FYP unzip -o ViewProfile.war -d /opt/lampp/htdocs'
