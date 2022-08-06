@@ -35,7 +35,7 @@
 	Our Mission: We nurture individuals to prepare them for a dynamic world in partnership with stakeholders, leveraging problem-based learning. 
     </p>
     <p>
-        Our Core Values: Excellence, Customer-Centric, Integrity, Teamwork.
+        Our Core Values: Excellence, Customer-Centric, Integrity, Teamwork and Enterprising!!
     </p>
     <br />
     <footer class="offset-xl-3"><marquee>&copy</marquee></footer>
